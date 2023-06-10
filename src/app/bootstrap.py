@@ -9,6 +9,7 @@ from .metrics import PORT
 
 from adapter.couchbase_repository import CouchbaseRepository
 from adapter.auth_repository import AuthRepository
+
 PORT.info({"port": "8000"})
 
 app = FastAPI()
@@ -25,6 +26,7 @@ app.add_route(("/" + METRICS_PATH), metrics)
 couchbaseRepo = CouchbaseRepository()
 
 authRepo = AuthRepository(mangement_api_token)
+
 
 @app.post("/")
 def base_root(request: Request):
